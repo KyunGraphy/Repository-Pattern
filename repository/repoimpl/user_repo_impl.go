@@ -11,6 +11,7 @@ type UserRepoImpl struct {
 	Db *sql.DB
 }
 
+// Return the address of repo_impl struct
 func NewUserRepo(db *sql.DB) repo.UserRepo {
 	return &UserRepoImpl {
 		Db : db,
@@ -18,6 +19,7 @@ func NewUserRepo(db *sql.DB) repo.UserRepo {
 }
 
 func (u *UserRepoImpl) Select() ([]models.User, error) {
+	// Create an empty slice with User datatype
 	users := make([]models.User, 0)
 
 	rows, err := u.Db.Query("SELECT * FROM users")

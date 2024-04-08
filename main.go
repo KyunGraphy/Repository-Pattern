@@ -17,6 +17,7 @@ const (
 )
 
 func main() {
+	// Create new connection, return PostgresDB object
 	db := driver.Connect(host, port, user, password, dbname)
 
 	err := db.SQL.Ping()
@@ -24,8 +25,11 @@ func main() {
 		panic(err)
 	}
 
+	// Create new UserRepoImpl object
+	// Return an interface -> Call the method
 	userRepo := repoimpl.NewUserRepo(db.SQL)
 
+	// Create new model objects
 	uhp := models.User{
 		ID: 1,
 		Name: "Ung Hoang Phuc",
