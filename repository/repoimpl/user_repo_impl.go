@@ -11,7 +11,9 @@ type UserRepoImpl struct {
 	Db *sql.DB
 }
 
-// Return the address of repo_impl struct
+// Return the interface implement of userRepo
+// Signature of Repository Pattern
+// Create new instance of UserRepo in user_repo_impl.go file (Not instance of User Repo Impl)
 func NewUserRepo(db *sql.DB) repo.UserRepo {
 	return &UserRepoImpl {
 		Db : db,
